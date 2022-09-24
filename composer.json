@@ -28,7 +28,15 @@
         "hyperf/memory": "~2.2.0",
         "hyperf/process": "~2.2.0",
         "hyperf/validation": "^2.2",
-        "phpunit/php-file-iterator": "^3.0"
+        "phpunit/php-file-iterator": "^3.0",
+        "kilofox/hyperf-captcha": "^1.0",
+        "hyperf/redis": "~2.2.0",
+        "hyperf/model-cache": "~2.2.0",
+        "hyperf/amqp": "~2.2.0",
+        "hyperf/async-queue": "~2.2.0",
+        "hyperf-ext/auth": "^2.2",
+        "hyperf-ext/encryption": "^2.2",
+        "hyperf-ext/hashing": "^2.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",

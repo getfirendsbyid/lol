@@ -24,7 +24,7 @@ class Tutorial extends Model
      *
      * @var string
      */
-    protected $table = 'lol_tutorial';
+    protected $table = 'qy_tutorial';
     /**
      * The attributes that are mass assignable.
      *

@@ -26,7 +26,7 @@ class Skin extends Model
      *
      * @var string
      */
-    protected $table = 'lol_skin';
+    protected $table = 'qy_skin';
     /**
      * The attributes that are mass assignable.
      *

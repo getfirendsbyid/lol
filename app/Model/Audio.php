@@ -26,7 +26,7 @@ class Audio extends Model
      *
      * @var string
      */
-    protected $table = 'lol_audio';
+    protected $table = 'qy_audio';
     /**
      * The attributes that are mass assignable.
      *
