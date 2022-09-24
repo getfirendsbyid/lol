@@ -22,7 +22,7 @@ class HomeListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'page' => 'required|integer',
+
             'limit' => 'required|integer',
 
         ];
@@ -34,8 +34,7 @@ class HomeListRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'page.required' => 'page长度不能超过10',
-            'page.integer' => 'page必须是整数',
+
             'limit.required' => 'limit长度不能超过10',
             'limit.integer' => 'limit必须是整数',
         ];

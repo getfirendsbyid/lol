@@ -39,7 +39,7 @@ class Games extends Model
     protected $casts = [];
 
 
-    public static function homeList($page,$limit=8)
+    public static function homeList($limit=8)
     {
         $games =  Games::where('show','=',1)->get();
         foreach ($games as  $item){
@@ -47,7 +47,7 @@ class Games extends Model
                 ['show','=',1],
                 ['game_id','=',$item['id']]
             ];
-            $heroes = Heros::where($heroWhere)->take($limit)->skip(($page-1)*$limit)->get();
+            $heroes = Heros::where($heroWhere)->take($limit)->get();
             $item['hero'] = $heroes;
         }
         return $games;

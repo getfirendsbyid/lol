@@ -35,11 +35,8 @@ class GamesController extends AbstractController
     public function homeList(HomeListRequest $request)
     {
         $request->validated();
-        $page = $request->input('page');
         $limit = $request->input('limit');
-        var_dump($page);
-        var_dump($limit);
-        $all = Games::homeList($page,$limit);
+        $all = Games::homeList($limit);
         return $this->responseSuccess("获取成功",$all);
     }
 
