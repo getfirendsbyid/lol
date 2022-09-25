@@ -24,7 +24,7 @@ class Ban extends Model
      *
      * @var string
      */
-    protected $table = 'lol_ban';
+    protected $table = 'qy_ban';
     /**
      * The attributes that are mass assignable.
      *

@@ -38,7 +38,6 @@ return [
         Constant::OPTION_SOCKET_BUFFER_SIZE => 2 * 1024 * 1024,
         Constant::OPTION_BUFFER_OUTPUT_SIZE => 2 * 1024 * 1024,
         'document_root' => BASE_PATH . '/public',
-
         'enable_static_handler' => true,
     ],
     'callbacks' => [

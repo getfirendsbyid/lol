@@ -17,14 +17,14 @@ use PhpCsFixer\DocBlock\Tag;
 use function PHPUnit\Framework\throwException;
 
 
-class Heros extends Model
+class Games extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_heros';
+    protected $table = 'qy_games';
     /**
      * The attributes that are mass assignable.
      *
@@ -39,14 +39,18 @@ class Heros extends Model
     protected $casts = [];
 
 
-    public static function list($name)
+    public static function homeList($page,$limit=8)
     {
-        if (empty($name)){
-            $where = [];
-        }else{
-            $where = [['name',"like",'%'.$name.'%']];
+        $games =  Games::where('show','=',1)->get();
+        foreach ($games as  $item){
+            $heroWhere = [
+                ['show','=',1],
+                ['game_id','=',$item['id']]
+            ];
+            $heroes = Heros::where($heroWhere)->take($limit)->skip(($page-1)*$limit)->get();
+            $item['hero'] = $heroes;
         }
-        return Heros::where($where)->get();
+        return $games;
     }
 
 

@@ -35,3 +35,8 @@ Router::addGroup('/hero/',function (){
 });
 
 
+Router::addGroup('/api/games/',function (){
+    Router::get('homeList','App\Controller\GamesController@homeList');
+
+});
+

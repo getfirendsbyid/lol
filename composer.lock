@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d8c04a9e73a98bbe214bc4fb124def7",
+    "content-hash": "c03e26e8ad4040290b65af1df14c2a4d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -894,6 +894,229 @@
             "time": "2022-08-28T14:45:39+00:00"
         },
         {
+            "name": "hyperf-ext/auth",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf-ext/auth.git",
+                "reference": "bf88f313a45d8a5ee73951261cd7c4a4088e761f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf-ext/auth/zipball/bf88f313a45d8a5ee73951261cd7c4a4088e761f",
+                "reference": "bf88f313a45d8a5ee73951261cd7c4a4088e761f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-swoole": ">=4.5",
+                "hyperf-ext/hashing": "~2.2.0",
+                "hyperf/command": "~2.2.0",
+                "hyperf/config": "~2.2.0",
+                "hyperf/database": "~2.2.0",
+                "hyperf/db-connection": "~2.2.0",
+                "hyperf/di": "~2.2.0",
+                "hyperf/framework": "~2.2.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/testing": "~2.2.0",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "swoole/ide-helper": "dev-master"
+            },
+            "suggest": {
+                "hyperf-ext/cookie": "Required to use session guard.",
+                "hyperf-ext/jwt": "Required to use JWT guard.",
+                "hyperf/session": "Required to use session guard."
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "HyperfExt\\Auth\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HyperfExt\\Auth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Zhu",
+                    "email": "eric@zhu.email"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Hyperf Auth package.",
+            "keywords": [
+                "auth",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf-ext/auth/issues",
+                "source": "https://github.com/hyperf-ext/auth/tree/v2.2.0"
+            },
+            "time": "2021-07-30T18:15:50+00:00"
+        },
+        {
+            "name": "hyperf-ext/encryption",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf-ext/encryption.git",
+                "reference": "d20a71ca1c680da1137bb2c6646e088701070728"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf-ext/encryption/zipball/d20a71ca1c680da1137bb2c6646e088701070728",
+                "reference": "d20a71ca1c680da1137bb2c6646e088701070728",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-swoole": ">=4.5",
+                "hyperf/command": "~2.2.0",
+                "hyperf/di": "~2.2.0",
+                "hyperf/framework": "~2.2.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/testing": "~2.2.0",
+                "limingxinleo/happy-join-hyperf": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "swoole/ide-helper": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "HyperfExt\\Encryption\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HyperfExt\\Encryption\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Zhu",
+                    "email": "eric@zhu.email"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Hyperf Encryption package.",
+            "keywords": [
+                "encryption",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf-ext/encryption/issues",
+                "source": "https://github.com/hyperf-ext/encryption/tree/v2.2.1"
+            },
+            "time": "2022-03-14T22:38:18+00:00"
+        },
+        {
+            "name": "hyperf-ext/hashing",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf-ext/hashing.git",
+                "reference": "e3399ebcaa8242e36bae988533e7acdfd4a73c94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf-ext/hashing/zipball/e3399ebcaa8242e36bae988533e7acdfd4a73c94",
+                "reference": "e3399ebcaa8242e36bae988533e7acdfd4a73c94",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/config": "^2.1",
+                "hyperf/di": "^2.1",
+                "hyperf/framework": "^2.1",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "hyperf/testing": "^2.1",
+                "phpstan/phpstan": "^0.12",
+                "swoole/ide-helper": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "HyperfExt\\Hashing\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HyperfExt\\Hashing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric Zhu",
+                    "email": "eric@zhu.email"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Hyperf Hashing package.",
+            "keywords": [
+                "hashing",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/hyperf-ext/hashing/issues",
+                "source": "https://github.com/hyperf-ext/hashing/tree/v2.2.2"
+            },
+            "time": "2021-08-11T19:10:50+00:00"
+        },
+        {
             "name": "hyperf-ext/jwt",
             "version": "v2.2.1",
             "source": {
@@ -972,6 +1195,142 @@
                 "source": "https://github.com/hyperf-ext/jwt/tree/v2.2.1"
             },
             "time": "2021-08-11T19:13:25+00:00"
+        },
+        {
+            "name": "hyperf/amqp",
+            "version": "v2.2.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/amqp.git",
+                "reference": "a379fcca73be52cc9e2e8ebfcfd641ee831c7f3e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/amqp/zipball/a379fcca73be52cc9e2e8ebfcfd641ee831c7f3e",
+                "reference": "a379fcca73be52cc9e2e8ebfcfd641ee831c7f3e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "doctrine/instantiator": "^1.2.0",
+                "hyperf/contract": "~2.2.0",
+                "hyperf/pool": "~2.2.0",
+                "hyperf/process": "~2.2.0",
+                "hyperf/utils": "~2.2.0",
+                "php": ">=7.2",
+                "php-amqplib/php-amqplib": "^3.0",
+                "psr/container": "^1.0|^2.0",
+                "psr/event-dispatcher": "^1.0",
+                "psr/log": "^1.0|^2.0|^3.0"
+            },
+            "suggest": {
+                "hyperf/di": "Required to use annotations.",
+                "hyperf/event": "Declare queue and start consumers automatically."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\Amqp\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Amqp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A amqplib for hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "AMQP",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "time": "2022-05-24T13:10:54+00:00"
+        },
+        {
+            "name": "hyperf/async-queue",
+            "version": "v2.2.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/async-queue.git",
+                "reference": "6e8da55c8b19322023d5fdd970bcbddf774e79f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/async-queue/zipball/6e8da55c8b19322023d5fdd970bcbddf774e79f0",
+                "reference": "6e8da55c8b19322023d5fdd970bcbddf774e79f0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/command": "~2.2.0",
+                "hyperf/contract": "~2.2.8",
+                "hyperf/utils": "~2.2.0",
+                "php": ">=7.2",
+                "psr/container": "^1.0|^2.0",
+                "psr/event-dispatcher": "^1.0"
+            },
+            "suggest": {
+                "hyperf/di": "Required to use annotations.",
+                "hyperf/event": "Required to dispatch a event.",
+                "hyperf/logger": "Required to use QueueHandleListener.",
+                "hyperf/process": "Auto register the consumer process for server."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\AsyncQueue\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\AsyncQueue\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A async queue component for hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "async-queue",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "time": "2022-05-24T13:10:54+00:00"
         },
         {
             "name": "hyperf/cache",
@@ -2278,6 +2637,70 @@
             "time": "2022-05-24T13:10:54+00:00"
         },
         {
+            "name": "hyperf/model-cache",
+            "version": "v2.2.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/model-cache.git",
+                "reference": "f1e4148da7f6dc4b5eae74594311e53674fd532d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/model-cache/zipball/f1e4148da7f6dc4b5eae74594311e53674fd532d",
+                "reference": "f1e4148da7f6dc4b5eae74594311e53674fd532d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/contract": "~2.2.0",
+                "hyperf/db-connection": "~2.2.0",
+                "hyperf/utils": "~2.2.0",
+                "php": ">=7.2",
+                "psr/container": "^1.0|^2.0",
+                "psr/simple-cache": "^1.0"
+            },
+            "suggest": {
+                "hyperf/event": "Required to use DeleteCacheListener."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\ModelCache\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\ModelCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A model cache component for hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "model-cache",
+                "php"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "time": "2022-05-24T13:10:54+00:00"
+        },
+        {
             "name": "hyperf/model-listener",
             "version": "v2.2.33",
             "source": {
@@ -2456,6 +2879,72 @@
                 "hyperf",
                 "php",
                 "process"
+            ],
+            "support": {
+                "docs": "https://hyperf.wiki",
+                "issues": "https://github.com/hyperf/hyperf/issues",
+                "pull-request": "https://github.com/hyperf/hyperf/pulls",
+                "source": "https://github.com/hyperf/hyperf"
+            },
+            "time": "2022-05-24T13:10:54+00:00"
+        },
+        {
+            "name": "hyperf/redis",
+            "version": "v2.2.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hyperf/redis.git",
+                "reference": "f0b858bec45b479d7b8cc4a70a792b144a6a680e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hyperf/redis/zipball/f0b858bec45b479d7b8cc4a70a792b144a6a680e",
+                "reference": "f0b858bec45b479d7b8cc4a70a792b144a6a680e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-redis": "*",
+                "hyperf/contract": "~2.2.0",
+                "hyperf/pool": "~2.2.0",
+                "hyperf/utils": "~2.2.0",
+                "php": ">=7.2",
+                "psr/container": "^1.0|^2.0"
+            },
+            "suggest": {
+                "ext-redis": "Required to use sentinel mode (>=5.2).",
+                "hyperf/di": "Create the RedisPool via dependency injection."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                },
+                "hyperf": {
+                    "config": "Hyperf\\Redis\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hyperf\\Redis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A redis component for hyperf.",
+            "homepage": "https://hyperf.io",
+            "keywords": [
+                "hyperf",
+                "php",
+                "pool",
+                "redis"
             ],
             "support": {
                 "docs": "https://hyperf.wiki",
@@ -2728,6 +3217,60 @@
                 "source": "https://github.com/hyperf/validation/tree/v2.2.33"
             },
             "time": "2022-05-24T13:10:54+00:00"
+        },
+        {
+            "name": "kilofox/hyperf-captcha",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kilofox/hyperf-captcha.git",
+                "reference": "a0208dc893b5b555591174fd1dc0769dca2189d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kilofox/hyperf-captcha/zipball/a0208dc893b5b555591174fd1dc0769dca2189d5",
+                "reference": "a0208dc893b5b555591174fd1dc0769dca2189d5",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "hyperf/http-message": "^2.2",
+                "hyperf/utils": "^2.2",
+                "php": ">=7.4",
+                "psr/simple-cache": "^1.0",
+                "symfony/string": "^5.3|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "hyperf": {
+                    "config": "Kilofox\\Captcha\\ConfigProvider"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kilofox\\Captcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A captcha component for Hyperf.",
+            "keywords": [
+                "captcha",
+                "hyperf",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/kilofox/hyperf-captcha/issues",
+                "source": "https://github.com/kilofox/hyperf-captcha/tree/v1.0.1"
+            },
+            "time": "2022-09-15T02:13:43+00:00"
         },
         {
             "name": "laminas/laminas-mime",
@@ -3011,16 +3554,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "2.4.5",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "9392c5f1df57d865c406ee65e5012d566686be12"
+                "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/9392c5f1df57d865c406ee65e5012d566686be12",
-                "reference": "9392c5f1df57d865c406ee65e5012d566686be12",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
+                "reference": "8aaffb653c5777781b0f7f69a5d937baf7ab6cdb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3083,11 +3626,11 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.4.5"
+                "source": "https://github.com/thephpleague/flysystem/tree/2.5.0"
             },
             "funding": [
                 {
-                    "url": "https://offset.earth/frankdejonge",
+                    "url": "https://ecologi.com/frankdejonge",
                     "type": "custom"
                 },
                 {
@@ -3099,7 +3642,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-25T18:39:39+00:00"
+            "time": "2022-09-17T21:02:32+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -3495,6 +4038,222 @@
             "time": "2022-09-04T07:30:47+00:00"
         },
         {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "58c3f47f650c94ec05a151692652a868995d2938"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/58c3f47f650c94ec05a151692652a868995d2938",
+                "reference": "58c3f47f650c94ec05a151692652a868995d2938",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7|^8|^9",
+                "vimeo/psalm": "^1|^2|^3|^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/constant_time_encoding/issues",
+                "source": "https://github.com/paragonie/constant_time_encoding"
+            },
+            "time": "2022-06-14T06:56:20+00:00"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v9.99.100",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">= 7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/random_compat/issues",
+                "source": "https://github.com/paragonie/random_compat"
+            },
+            "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "php-amqplib/php-amqplib",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-amqplib/php-amqplib.git",
+                "reference": "0bec5b392428e0ac3b3f34fbc4e02d706995833e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/0bec5b392428e0ac3b3f34fbc4e02d706995833e",
+                "reference": "0bec5b392428e0ac3b3f34fbc4e02d706995833e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-sockets": "*",
+                "php": "^7.1||^8.0",
+                "phpseclib/phpseclib": "^2.0|^3.0"
+            },
+            "conflict": {
+                "php": "7.4.0 - 7.4.1"
+            },
+            "replace": {
+                "videlalvaro/php-amqplib": "self.version"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "nategood/httpful": "^0.2.20",
+                "phpunit/phpunit": "^7.5|^9.5",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpAmqpLib\\": "PhpAmqpLib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla",
+                    "role": "Original Maintainer"
+                },
+                {
+                    "name": "Raúl Araya",
+                    "email": "nubeiro@gmail.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Luke Bakken",
+                    "email": "luke@bakken.io",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ramūnas Dronga",
+                    "email": "github@ramuno.lt",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
+            "homepage": "https://github.com/php-amqplib/php-amqplib/",
+            "keywords": [
+                "message",
+                "queue",
+                "rabbitmq"
+            ],
+            "support": {
+                "issues": "https://github.com/php-amqplib/php-amqplib/issues",
+                "source": "https://github.com/php-amqplib/php-amqplib/tree/v3.2.0"
+            },
+            "time": "2022-03-10T19:16:00+00:00"
+        },
+        {
             "name": "php-di/phpdoc-reader",
             "version": "2.2.1",
             "source": {
@@ -3618,6 +4377,122 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "3.0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "c96e250238e88bf1040e9f7715efab1d6bc7f622"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/c96e250238e88bf1040e9f7715efab1d6bc7f622",
+                "reference": "c96e250238e88bf1040e9f7715efab1d6bc7f622",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "paragonie/constant_time_encoding": "^1|^2",
+                "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
+                "php": ">=5.6.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "suggest": {
+                "ext-dom": "Install the DOM extension to load XML formatted public keys.",
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib3\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "support": {
+                "issues": "https://github.com/phpseclib/phpseclib/issues",
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.15"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/terrafrost",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpseclib",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-09-02T17:05:08+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -8099,16 +8974,16 @@
         },
         {
             "name": "swoole/ide-helper",
-            "version": "4.8.11",
+            "version": "4.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swoole/ide-helper.git",
-                "reference": "edcf955501271b1fd5d77efef31027b1e08f4a85"
+                "reference": "afe3a09f8c49a6011e2206a03e55e391d97d81b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/edcf955501271b1fd5d77efef31027b1e08f4a85",
-                "reference": "edcf955501271b1fd5d77efef31027b1e08f4a85",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/afe3a09f8c49a6011e2206a03e55e391d97d81b0",
+                "reference": "afe3a09f8c49a6011e2206a03e55e391d97d81b0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -8131,7 +9006,7 @@
             "description": "IDE help files for Swoole.",
             "support": {
                 "issues": "https://github.com/swoole/ide-helper/issues",
-                "source": "https://github.com/swoole/ide-helper/tree/4.8.11"
+                "source": "https://github.com/swoole/ide-helper/tree/4.8.12"
             },
             "funding": [
                 {
@@ -8143,7 +9018,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-07-09T06:20:31+00:00"
+            "time": "2022-09-22T16:31:12+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
