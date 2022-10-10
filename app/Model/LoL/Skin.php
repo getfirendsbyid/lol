@@ -9,21 +9,23 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
-use App\Model\LoL\Heros;
+use App\Constants\HttpCode;
+use App\Exception\BusinessException;
+use App\Model\Model;
 
 
-class Games extends Model
+class Skin extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_games';
+    protected $table = 'qy_lol_skin';
     /**
      * The attributes that are mass assignable.
      *
@@ -38,18 +40,13 @@ class Games extends Model
     protected $casts = [];
 
 
-    public static function homeList($limit=8)
+    public static function list($id)
     {
-        $games =  Games::where('show','=',1)->get();
-        foreach ($games as  $item){
-            $heroWhere = [
-                ['show','=',1],
-                ['game_id','=',$item['id']]
-            ];
-            $heroes = Heros::where($heroWhere)->take($limit)->get();
-            $item['hero'] = $heroes;
+        $hero = Heros::where('heroId','=',$id)->first();
+        if (empty($hero)){
+            throw new BusinessException(HttpCode::LogicError,'该英雄不存在');
         }
-        return $games;
+        return Skin::where('hero_id',"=",$hero['id'])->get();
     }
 
 

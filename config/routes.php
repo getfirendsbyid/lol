@@ -14,17 +14,22 @@ use Hyperf\HttpServer\Router\Router;
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 
 Router::get('/favicon.ico', function () {
-    return '';
+    return '12';
 });
 
-Router::addGroup('/lol/',function (){
+Router::addGroup('/test/',function (){
 //    Router::get('start','App\Controller\JymController@getGames');
 //    Router::get('file','App\Controller\JymController@file');
 //    Router::get('ban','App\Controller\JymController@ban');
-    Router::get('tutorial','App\Controller\JymController@tutorial');
+//    Router::get('tutorial','App\Controller\JymController@tutorial');
 });
 
-Router::addGroup('/hero/',function (){
+Router::addGroup('/api/home/',function (){
+    Router::post('list','App\Controller\HomeController@list');
+});
+
+Router::addGroup('/lol/',function (){
+
     Router::post('list','App\Controller\IndexController@list');
     Router::post('getSkinList','App\Controller\IndexController@getSkinList');
     Router::post('getAudioList','App\Controller\IndexController@getAudioList');
@@ -36,7 +41,6 @@ Router::addGroup('/hero/',function (){
 
 
 Router::addGroup('/api/games/',function (){
-    Router::get('homeList','App\Controller\GamesController@homeList');
-
+    Router::post('homeList','App\Controller\GamesController@homeList');
 });
 

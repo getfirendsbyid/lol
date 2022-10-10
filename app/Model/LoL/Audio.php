@@ -9,14 +9,13 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
 use App\Constants\HttpCode;
 use App\Exception\BusinessException;
-use PhpCsFixer\DocBlock\Tag;
-use function PHPUnit\Framework\throwException;
+use App\Model\Model;
 
 
 class Audio extends Model
@@ -26,7 +25,7 @@ class Audio extends Model
      *
      * @var string
      */
-    protected $table = 'qy_audio';
+    protected $table = 'qy_lol_audio';
     /**
      * The attributes that are mass assignable.
      *
