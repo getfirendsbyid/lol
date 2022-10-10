@@ -9,24 +9,21 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
-use App\Constants\HttpCode;
-use App\Exception\BusinessException;
-use PhpCsFixer\DocBlock\Tag;
-use function PHPUnit\Framework\throwException;
+use App\Model\Model;
 
 
-class Skin extends Model
+class Tutorial extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_skin';
+    protected $table = 'qy_lol_tutorial';
     /**
      * The attributes that are mass assignable.
      *
@@ -41,13 +38,14 @@ class Skin extends Model
     protected $casts = [];
 
 
-    public static function list($id)
+    public static function list($name)
     {
-        $hero = Heros::where('heroId','=',$id)->first();
-        if (empty($hero)){
-            throw new BusinessException(HttpCode::LogicError,'该英雄不存在');
+        if (empty($name)){
+            $where = [];
+        }else{
+            $where = [['name',"like",'%'.$name.'%']];
         }
-        return Skin::where('hero_id',"=",$hero['id'])->get();
+        return Ban::where($where)->get();
     }
 
 

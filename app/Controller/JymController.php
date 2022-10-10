@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Model\Audio;
-use App\Model\Ban;
-use App\Model\Heros;
-use App\Model\Skin;
-use App\Model\Tutorial;
+use App\Model\LoL\Audio;
+use App\Model\LoL\Ban;
+use App\Model\LoL\Heros;
+use App\Model\LoL\Map;
+use App\Model\LoL\Skin;
+use App\Model\LoL\Tutorial;
 use FilesystemIterator;
 use GuzzleHttp\Client;
-use GuzzleHttp\Pool;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
@@ -38,6 +38,8 @@ class JymController extends AbstractController
         $all = [];
         foreach ($data as $key => $item) {
             $raw = [];
+            $ban = [];
+            $select = [];
             $raw["heroId"] = $item["heroId"];
             $raw["name"] = $item["name"];
             $raw["alias"] = $item["alias"];
@@ -46,24 +48,39 @@ class JymController extends AbstractController
             $raw["banAudio"] = $item["banAudio"];
             $raw["created_at"] = date("Y-m-d H:i:s");
             $raw["updated_at"] = date("Y-m-d H:i:s");
-            array_push($all, $raw);
+            $id = Heros::insertGetId($raw);
 
+            $ban['heroId'] = $id;
+            $ban['audioUrl'] =  $item['banAudio'];
+            $ban['type'] = 0;
+            $ban["created_at"] = date("Y-m-d H:i:s");
+            $ban["updated_at"] = date("Y-m-d H:i:s");
+
+            $select['heroId'] = $id;
+            $select['audioUrl'] =  $item['selectAudio'];
+            $select['type'] = 1;
+            $select["created_at"] = date("Y-m-d H:i:s");
+            $select["updated_at"] = date("Y-m-d H:i:s");
+            Ban::insertGetId($ban);
+            Ban::insertGetId($select);
         }
-        var_dump($all);
 
-        $inserRes = Db::table("lol_heros")->insert($all);
+
+    }
+
+    public function getban(){
 
     }
 
 
     public function file(\League\Flysystem\Filesystem $filesystem)
     {
-        $heroMenu = new FilesystemIterator('public/audio');
+        $heroMenu = new FilesystemIterator('public/lol/audio');
         while ($heroMenu->valid()) { // 检测迭代器是否到底了
             echo $heroMenu->getFilename(), PHP_EOL;
             $name =  explode('-', $heroMenu->getFilename())[1];
             $herosInfo = Heros::where('title','=',$name)->first();
-            $skinMenu = new FilesystemIterator('public/audio/'.$heroMenu->getFilename());
+            $skinMenu = new FilesystemIterator('public/lol/audio/'.$heroMenu->getFilename());
             while ($skinMenu->valid()) {
               echo  $skinMenu->getFilename(), PHP_EOL;;
 
@@ -83,11 +100,11 @@ class JymController extends AbstractController
                     $skinId = $hasSetSkin['id'];
                 }
 
-                $file = new FilesystemIterator('public/audio/'.$heroMenu->getFilename().'/'.$skinMenu->getFilename());
+                $file = new FilesystemIterator('public/lol/audio/'.$heroMenu->getFilename().'/'.$skinMenu->getFilename());
 
                 while ($file->valid()) {
                     echo $file->getFilename(),PHP_EOL;
-                    $audioUrl = 'audio/'.$heroMenu->getFilename().'/'. $skinMenu->getFilename().'/'.$file->getFilename();
+                    $audioUrl = 'lol/audio/'.$heroMenu->getFilename().'/'. $skinMenu->getFilename().'/'.$file->getFilename();
                     $audioDara = [
                         'url'=>$audioUrl,
                         'hero_id'=>$herosInfo['id'],
@@ -105,50 +122,38 @@ class JymController extends AbstractController
         }
     }
 
-    public function ban(\League\Flysystem\Filesystem $filesystem)
-    {
-        $heroMenu = new FilesystemIterator('public/ban');
-        while ($heroMenu->valid()) { // 检测迭代器是否到底了
-            echo $heroMenu->getFilename(), PHP_EOL;
-            $name1 =  explode('】', $heroMenu->getFilename())[0];
-            $name =  explode(' ', $name1)[1];
 
-            $herosInfo = Heros::where('title','=',$name)->first();
-
-            $audioUrl = 'ban/'.$heroMenu->getFilename();
-            var_dump($audioUrl);
-            $audioDara = [
-                'audioUrl'=>$audioUrl,
-                'heroId'=>$herosInfo['id'],
-                'created_at'=>date('Y-m-d H:i:s'),
-                'updated_at'=>date('Y-m-d H:i:s')
-            ];
-            Ban::insert($audioDara);
-
-            $heroMenu->next(); // 游标往后移动
-        }
-    }
 
 
     public function tutorial(\League\Flysystem\Filesystem $filesystem)
     {
-        $heroMenu = new FilesystemIterator('public/tutorial');
-        $i = 0;
-        while ($heroMenu->valid()) { // 检测迭代器是否到底了
-            echo $heroMenu->getFilename(), PHP_EOL;
+        $mapMenu = new FilesystemIterator('public/lol/map-audio');
+        while ($mapMenu->valid()) { // 检测迭代器是否到底了
+            echo $mapMenu->getFilename(), PHP_EOL;
+            $map = [
+                'map_name'=>$mapMenu->getFilename(),
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            ];
+            $id = Map::insertGetId($map);
+            $audioMenu = new FilesystemIterator('public/lol/map-audio/'.$mapMenu->getFilename());
+            while ($audioMenu->valid()) {
+                echo $audioMenu->getFilename(), PHP_EOL;
 
+                $audioUrl = 'lol/map-audio/'.$audioMenu->getFilename();
+                var_dump($audioUrl);
+                $audioData = [
+                    'map_id'=>$id,
+                    'audioUrl'=>$audioUrl,
+                    'created_at'=>date('Y-m-d H:i:s'),
+                    'updated_at'=>date('Y-m-d H:i:s')
+                ];
+                Tutorial::insert($audioData);
+                $audioMenu->next(); // 游标往后移动
 
-            $audioUrl = 'tutorial/'.$heroMenu->getFilename();
-//            var_dump($audioUrl);
-//            $audioDara = [
-//                'audioUrl'=>$audioUrl,
-//                'created_at'=>date('Y-m-d H:i:s'),
-//                'updated_at'=>date('Y-m-d H:i:s')
-//            ];
-//            $id = Tutorial::insertGetId($audioDara);
-//             var_dump($id);
-            echo $i++;
-            $heroMenu->next(); // 游标往后移动
+            } // 检测迭代器是否到底了
+
+            $mapMenu->next(); // 游标往后移动
         }
     }
 }

@@ -9,22 +9,21 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
-use PhpCsFixer\DocBlock\Tag;
-use function PHPUnit\Framework\throwException;
+use App\Model\Model;
 
 
-class Ban extends Model
+class Map extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_ban';
+    protected $table = 'qy_lol_map';
     /**
      * The attributes that are mass assignable.
      *

@@ -16,17 +16,13 @@ use App\Model\LoL\Heros;
 use App\Request\HeroListRequest;
 use App\Utils\ApiResponseTrait;
 
-class HomeController extends AbstractController
+class LOLController extends AbstractController
 {
     use ApiResponseTrait;
 
-    public function list(HeroListRequest $request)
+    public function homeList(HeroListRequest $request)
     {
-        $lolData = Heros::homeList();
-        $data =[
-            'lol'=>$lolData
-        ];
-        return $this->responseSuccess("获取成功",$data);
+
     }
 
 }

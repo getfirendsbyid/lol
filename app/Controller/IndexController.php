@@ -13,11 +13,11 @@ namespace App\Controller;
 
 use App\Constants\HttpCode;
 use App\Exception\BusinessException;
-use App\Model\Audio;
-use App\Model\Ban;
-use App\Model\Heros;
-use App\Model\Skin;
-use App\Model\Tutorial;
+use App\Model\LoL\Audio;
+use App\Model\LoL\Ban;
+use App\Model\LoL\Heros;
+use App\Model\LoL\Skin;
+use App\Model\LoL\Tutorial;
 use App\Request\DownloadRequest;
 use App\Request\GetRadioListRequest;
 use App\Request\HeroListRequest;

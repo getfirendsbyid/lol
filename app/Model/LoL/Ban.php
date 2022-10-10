@@ -9,22 +9,21 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
-use PhpCsFixer\DocBlock\Tag;
-use function PHPUnit\Framework\throwException;
+use App\Model\Model;
 
 
-class Heros extends Model
+class Ban extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_heros';
+    protected $table = 'qy_lol_ban';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,7 +45,7 @@ class Heros extends Model
         }else{
             $where = [['name',"like",'%'.$name.'%']];
         }
-        return Heros::where($where)->get();
+        return Ban::where($where)->get();
     }
 
 

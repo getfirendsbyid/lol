@@ -9,22 +9,21 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Model\LoL;
 
 
 
-use PhpCsFixer\DocBlock\Tag;
-use function PHPUnit\Framework\throwException;
+use App\Model\Model;
 
 
-class Tutorial extends Model
+class Heros extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'qy_tutorial';
+    protected $table = 'qy_lol_heros';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,9 +45,17 @@ class Tutorial extends Model
         }else{
             $where = [['name',"like",'%'.$name.'%']];
         }
-        return Ban::where($where)->get();
+        return Heros::where($where)->get();
     }
 
+    public static function homeList()
+    {
+        $data =  Heros::limit(12)->get();
+        foreach ($data as $list=>$item){
+            $item['imgUrl'] =  'https://game.gtimg.cn/images/lol/act/img/skinloading/'.$item['heroId'].'000.jpg';
+        }
+        return $data;
+    }
 
 
 

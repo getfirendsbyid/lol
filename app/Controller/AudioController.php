@@ -12,21 +12,19 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\Games;
-use App\Model\LoL\Heros;
-use App\Request\HeroListRequest;
+use App\Request\Games\HomeListRequest;
 use App\Utils\ApiResponseTrait;
 
-class HomeController extends AbstractController
+class AudioController extends AbstractController
 {
     use ApiResponseTrait;
 
-    public function list(HeroListRequest $request)
+    public function homeList(HomeListRequest $request)
     {
-        $lolData = Heros::homeList();
-        $data =[
-            'lol'=>$lolData
-        ];
-        return $this->responseSuccess("获取成功",$data);
+        $request->validated();
+        $limit = $request->input('limit');
+        $all = Games::homeList($limit);
+        return $this->responseSuccess("获取成功",$all);
     }
 
 }
