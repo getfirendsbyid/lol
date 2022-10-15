@@ -85,5 +85,19 @@ class Heros extends Model
         return $heroData;
     }
 
+    public static function heroList($name='',$page,$limit)
+    {
+        $heroModel = Heros::query();
+        if (!empty($name)){
+            $heroModel->where('name','like','%'.$name.'%')
+                ->orWhere('title','like','%'.$name.'%');
+        }
+        $data = $heroModel->take($limit)
+            ->skip(($page-1)*$limit)
+            ->select('id','heroId','name','alias','title','selectAudio','banAudio')
+            ->get();
+        return $data;
+    }
+
 
 }

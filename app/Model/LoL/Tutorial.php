@@ -38,14 +38,11 @@ class Tutorial extends Model
     protected $casts = [];
 
 
-    public static function list($name)
+
+
+    public static function list()
     {
-        if (empty($name)){
-            $where = [];
-        }else{
-            $where = [['name',"like",'%'.$name.'%']];
-        }
-        return Ban::where($where)->get();
+
     }
 
 
