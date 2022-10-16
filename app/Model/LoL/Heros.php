@@ -57,7 +57,33 @@ class Heros extends Model
         return $data;
     }
 
-
+    public static function getHeroInfo($id,$skinId,$page,$limit)
+    {
+        $heroData  =  Heros::find($id);
+        $skinModel = Skin::query();
+        if (empty($skinId)){
+            $skinModel->where('hero_id','=',$id);
+        }else{
+            $skinModel->where('id','=',$skinId);
+        }
+        $skin =  $skinModel->select(['id','skin_name','url'])->get();
+        $heroData['skin'] = $skin;
+        $skinIds = [];
+        foreach ($skin as $item){
+            array_push($skinIds,$item['id']);
+        }
+        $audio = Audio::whereIn('skin_id',$skinIds)
+            ->take($limit)
+            ->skip($limit*($page-1))
+            ->select()
+            ->get();
+        $heroData['audio'] = $audio;
+        $audioCount = Audio::whereIn('skin_id',$skinIds)
+            ->select('id')
+            ->get()->count();
+        $heroData['count'] =$audioCount;
+        return $heroData;
+    }
 
 
 }

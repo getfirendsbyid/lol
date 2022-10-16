@@ -28,16 +28,25 @@ Router::addGroup('/api/home/',function (){
     Router::post('list','App\Controller\HomeController@list');
 });
 
-Router::addGroup('/lol/',function (){
+//lol路由
+Router::addGroup('/api/lol/',function (){
+    Router::post('list','App\Controller\LOLController@list');
+    Router::post('heroInfo','App\Controller\LOLController@heroInfo');
 
-    Router::post('list','App\Controller\IndexController@list');
-    Router::post('getSkinList','App\Controller\IndexController@getSkinList');
-    Router::post('getAudioList','App\Controller\IndexController@getAudioList');
-    Router::post('getHeroInfo','App\Controller\IndexController@getHeroInfo');
-    Router::get('download','App\Controller\IndexController@download');
-    Router::post('banList','App\Controller\IndexController@banList');
-    Router::post('turorialList','App\Controller\IndexController@turorialList');
 });
+
+
+
+//Router::addGroup('/lol/',function (){
+//
+//    Router::post('list','App\Controller\IndexController@list');
+//    Router::post('getSkinList','App\Controller\IndexController@getSkinList');
+//    Router::post('getAudioList','App\Controller\IndexController@getAudioList');
+//    Router::post('getHeroInfo','App\Controller\IndexController@getHeroInfo');
+//    Router::get('download','App\Controller\IndexController@download');
+//    Router::post('banList','App\Controller\IndexController@banList');
+//    Router::post('turorialList','App\Controller\IndexController@turorialList');
+//});
 
 
 Router::addGroup('/api/games/',function (){
