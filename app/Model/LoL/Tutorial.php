@@ -40,9 +40,9 @@ class Tutorial extends Model
 
 
 
-    public static function list()
+    public static function list($id,$page,$limit)
     {
-
+        return Tutorial::where('map_id','=',$id)->take($limit)->skip(($page-1)*$limit)->get();
     }
 
 

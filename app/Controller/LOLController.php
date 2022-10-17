@@ -19,6 +19,7 @@ use App\Model\LoL\Map;
 use App\Model\LoL\Tutorial;
 use App\Request\HeroListRequest;
 use App\Request\LOL\HeroInfoRequest;
+use App\Request\LOL\MapAudioRequest;
 use App\Utils\ApiResponseTrait;
 use http\Client\Curl\User;
 
@@ -60,13 +61,18 @@ class LOLController extends AbstractController
 
     }
 
-    public function mapAudio()
+    public function mapAudio(MapAudioRequest $request)
     {
-        Tutorial::where()
+        if ($request->has(['id','limit','page'])){
+             throw new BusinessException(HttpCode::LogicError,'参数不完整');
+        }
+        $id = $request->input('id');
+        $limit = $request->input('limit');
+        $page = $request->input('page');
+
+        $data = Tutorial::list($id,$page,$limit);
+        return $this->responseSuccess('获取成功',$data);
     }
-
-    
-
 
 
 }
