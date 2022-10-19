@@ -156,4 +156,74 @@ class JymController extends AbstractController
             $mapMenu->next(); // 游标往后移动
         }
     }
+
+    public function toname()
+    {
+//        $url = 'lol/audio/drmundo-蒙多/base/1023757319--你好，你挂号了吗？.wav';
+//        $last =  substr($url, strripos($url, "/"));
+//        var_dump($last);
+//        exit();
+        $limit = 100;
+        for ($i=1;$i<550;$i++){
+           $list = Audio::take($limit)->skip(($i-1)*$limit)->get();
+            foreach ($list as $item) {
+
+                $prel = strripos($item['url'], "】");
+                if ($prel){
+                    $pre = substr($item['url'], $prel);
+                    $last = $this->replace_specialChar(substr($pre, 0, strrpos($pre, "-")), ' ');
+                }else{
+                    $pre = substr($item['url'], strripos($item['url'], "--"));
+                    $last = $this->replace_specialChar(substr($pre, 0, strrpos($pre, ".wav")), ' ');
+                }
+                var_dump($pre);
+                var_dump($last);
+
+                $update = ['name' => $last];
+                Audio::where('id', '=', $item['id'])->update($update);
+            }
+            var_dump($i);
+        }
+    }
+    function replace_specialChar($strParam){
+        $regex = "/\/|\～|\【|\】|\『|\』|\：|\；|\《|\》|\’|\‘|\ |\*|\(|\)|\_|\+|\{|\}|\:|\<|\>|\?|\[|\]|\,|\.|\/|\;|\'|\`|\-|\=|\\\|\|/";
+        return preg_replace($regex,"",$strParam);
+    }
+
+    public function add(){
+        $limit = 100;
+        for ($i=1;$i<550;$i++){
+            $list = Tutorial::take($limit)->skip(($i-1)*$limit)->get();
+            foreach ($list as $item) {
+                $update = ['audioUrl' => '/'.$item['audioUrl']];
+                Tutorial::where('id', '=', $item['id'])->update($update);
+            }
+            var_dump($i);
+        }
+    }
+
+    public function ttoname()
+    {
+        $limit = 100;
+        for ($i=1;$i<550;$i++){
+            $list = Tutorial::take($limit)->skip(($i-1)*$limit)->get();
+            foreach ($list as $item) {
+
+                $prel = strripos($item['audioUrl'], "】");
+                if ($prel){
+                    $pre = substr($item['audioUrl'], $prel);
+                    $last = $this->replace_specialChar(substr($pre, 0, strrpos($pre, "-")), ' ');
+                }else{
+                    $pre = substr($item['audioUrl'], strripos($item['audioUrl'], "--"));
+                    $last = $this->replace_specialChar(substr($pre, 0, strrpos($pre, ".wav")), ' ');
+                }
+                var_dump($pre);
+                var_dump($last);
+
+                $update = ['name' => $last];
+                Tutorial::where('id', '=', $item['id'])->update($update);
+            }
+            var_dump($i);
+        }
+    }
 }

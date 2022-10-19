@@ -38,14 +38,11 @@ class Tutorial extends Model
     protected $casts = [];
 
 
-    public static function list($name)
+
+
+    public static function list($id,$page,$limit)
     {
-        if (empty($name)){
-            $where = [];
-        }else{
-            $where = [['name',"like",'%'.$name.'%']];
-        }
-        return Ban::where($where)->get();
+        return Tutorial::where('map_id','=',$id)->take($limit)->skip(($page-1)*$limit)->get();
     }
 
 
