@@ -22,7 +22,9 @@ Router::addGroup('/test/',function (){
 //    Router::get('file','App\Controller\JymController@file');
 //    Router::get('ban','App\Controller\JymController@ban');
 //    Router::get('tutorial','App\Controller\JymController@tutorial');
-    Router::get('toname','App\Controller\JymController@toname');
+//    Router::get('toname','App\Controller\JymController@toname');
+//    Router::get('add','App\Controller\JymController@add');
+//    Router::get('ttoname','App\Controller\JymController@ttoname');
 });
 
 Router::addGroup('/api/home/',function (){

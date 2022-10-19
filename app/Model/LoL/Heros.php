@@ -81,7 +81,8 @@ class Heros extends Model
         $audioCount = Audio::whereIn('skin_id',$skinIds)
             ->select('id')
             ->get()->count();
-        $heroData['count'] =$audioCount;
+        $heroData['count'] = $audioCount;
+        $heroData['pageCount'] =ceil($audioCount/$limit);
         return $heroData;
     }
 
