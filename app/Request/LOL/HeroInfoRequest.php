@@ -25,6 +25,7 @@ class HeroInfoRequest extends FormRequest
             'id' => 'required|integer',
             'page' => 'required|integer',
             'limit' => 'required|integer',
+            'skinId' => 'required|integer',
         ];
     }
 
@@ -42,9 +43,10 @@ class HeroInfoRequest extends FormRequest
             'page.required' => 'page不能为空',
             'page.integer' => 'page必须是整型',
 
-
             'limit.required' => 'limit不能为空',
             'limit.integer' => 'limit必须是整型',
+            'skinId.required' => 'skinId不能为空',
+            'skinId.integer' => 'skinId必须是整型',
         ];
     }
 }

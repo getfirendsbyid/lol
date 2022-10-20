@@ -42,7 +42,7 @@ class LOLController extends AbstractController
 
     public function heroInfo(HeroInfoRequest $request)
     {
-        if (!$request->has(['id','page','limit'])){
+        if (!$request->has(['id','page','limit','skinId'])){
             throw new BusinessException(HttpCode::LogicError,'参数不完整');
         }
         $request->validated();
