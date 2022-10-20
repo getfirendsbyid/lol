@@ -60,22 +60,26 @@ class Heros extends Model
     public static function getHeroInfo($id,$skinId,$page,$limit)
     {
         $heroData  =  Heros::find($id);
-        $skinModel = Skin::query();
-        if (empty($skinId)){
-            $skinModel->where('hero_id','=',$id);
-        }else{
-            $skinModel->where('id','=',$skinId);
-        }
-        $skin =  $skinModel->select(['id','skin_name','url'])->get();
-        $heroData['skin'] = $skin;
+        $skin = Skin::where('hero_id','=',$id)->select(['id','skin_name','url'])->get();
+        $defaultSkin = [
+            ['id'=>0,'skin_name'=>'全部','url'=>'']
+        ];
         $skinIds = [];
         foreach ($skin as $item){
+            array_push($defaultSkin,$item);
             array_push($skinIds,$item['id']);
         }
-        $audio = Audio::whereIn('skin_id',$skinIds)
-            ->take($limit)
-            ->skip($limit*($page-1))
-            ->select()
+        $heroData['skin'] = $defaultSkin;
+
+        $audioModel = Audio::query();
+        if ($skinId==0){
+            $audioModel->whereIn('skin_id',$skinIds)->where('qy_lol_audio.hero_id','=',$id);
+        }else{
+            $audioModel->where('skin_id','=',$skinId)->where('qy_lol_audio.hero_id','=',$id);
+        }
+        $audio = $audioModel->take($limit)->skip($limit*($page-1))
+            ->leftJoin('qy_lol_skin','qy_lol_skin.id','=','qy_lol_audio.skin_id')
+            ->select('qy_lol_audio.id','qy_lol_audio.hero_id','qy_lol_audio.url','qy_lol_audio.name','skin_name')
             ->get();
         $heroData['audio'] = $audio;
         $audioCount = Audio::whereIn('skin_id',$skinIds)

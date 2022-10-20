@@ -25,6 +25,11 @@ Router::addGroup('/test/',function (){
 //    Router::get('toname','App\Controller\JymController@toname');
 //    Router::get('add','App\Controller\JymController@add');
 //    Router::get('ttoname','App\Controller\JymController@ttoname');
+
+    //原神
+//    Router::get('getGSHero','App\Controller\JymController@getGSHero');
+    Router::get('getGSHeroAudio','App\Controller\JymController@getGSHeroAudio');
+
 });
 
 Router::addGroup('/api/home/',function (){
