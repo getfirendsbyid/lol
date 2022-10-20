@@ -59,6 +59,7 @@ class Heros extends Model
 
     public static function getHeroInfo($id,$skinId,$page,$limit)
     {
+        var_dump($skinId);
         $heroData  =  Heros::find($id);
         $skin = Skin::where('hero_id','=',$id)->select(['id','skin_name','url'])->get();
         $defaultSkin = [
