@@ -249,13 +249,19 @@ class JymController extends AbstractController
     }
 
     public $data =[];
+    public $url = '';
+    public $desc ='';
+    public $id ='';
+    public $language ='';
     public function getGSHeroAudio()
     {
         $client = new Client();
-        $all = \App\Model\GenShin\Heros::first();
+        $all = \App\Model\GenShin\Heros::all();
 
-//        foreach ($all as $item){
-            $url = 'https://api-static.mihoyo.com/common/blackboard/ys_obc/v1/content/info?app_sn=ys_obc&content_id='.$all['content_id'];
+        foreach ($all as $item){
+            $this->id = $item['id'];
+            var_dump('角色id=>'.$this->id);
+            $url = 'https://api-static.mihoyo.com/common/blackboard/ys_obc/v1/content/info?app_sn=ys_obc&content_id='.$item['content_id'];
             var_dump($url);
             $res = $client->request('GET', $url);
             $games = json_decode($res->getBody()->getContents(), true);
@@ -263,59 +269,37 @@ class JymController extends AbstractController
             $crawler = new Crawler();
             $crawler->addHtmlContent($juse);
 //            $this->data = [];
-//            for ($i=1;$i<5;$i++){
+            for ($i=1;$i<5;$i++){
+                $this->language = $i;
             $crawler->filter('ul > li:nth-child(1) > table:nth-child(2) > tbody > tr')->reduce(function (Crawler $node, $i) {
-                 // filters every other node
-                $reson = $node->filter('td:nth-child(1)')->text();
-                $node->filter('td:nth-child(2)')->reduce(function (Crawler $td2, $i){
-                    $src =  $td2->filter('source')->attr('src');
-                    $text =  $td2->text();
-                    var_dump($src);
-                    var_dump($text);
-                });
-                var_dump($reson);
+                $title = $node->filter('td:nth-child(1)')->text();
+                try {
+                    $node->filter('td:nth-child(2)')->reduce(function (Crawler $td2, $i){
+                        $src =  $td2->filter('source')->attr('src');
+                        $text =  $td2->text();
+                        $this->url = $src;
+                        $this->desc = $text;
+                    });
 
-                var_dump($i);
-//                $url = $node->filter('tr > td > source')->attr('src');
-//                $text = $node->filter('tr > td ')->text();
-//
-//                 $current = [
-//                       'title'=>$text,
-//                       'audioUrl'=>$url,
-//                       'created_at'=>date('Y-m-d H:i:s'),
-//                       'updated_at'=>date('Y-m-d H:i:s'),
-//                   ];
-//                var_dump($current);
+
+                    $insert = [
+                        'audioUrl'=> $this->url,
+                        'title'=>$title,
+                        'desc'=>$this->desc,
+                        'created_at'=>date('Y-m-d H:i:s'),
+                        'updated_at'=>date('Y-m-d H:i:s'),
+                        'hero_id'=>$this->id,
+                        'language_id'=>$this->language
+                    ];
+                    \App\Model\GenShin\Audio::insert($insert);
+                }catch (\Exception $exception){
+                    var_dump('第'.$i.'error');
+                }
+
              });
 
-//        foreach ($a as $key=>$domElement) {
-////            var_dump($domElement->firstChild);
-//            var_dump($domElement);
-//
-//        }
-//                    ->reduce(function (Crawler $node, $i) {
-//                        var_dump($i);
-//                        $url = $node->filter('source')->attr('src');
-//                        $text = $node->text();
-////                   $current = [
-////                       'title'=>$text,
-////                       'audioUrl'=>$url,
-////                       'created_at'=>date('Y-m-d H:i:s'),
-////                       'updated_at'=>date('Y-m-d H:i:s'),
-////                   ];
-////                   var_dump($current);
-////                   array_push( $this->data,$current);
-//                        var_dump($url);
-//                        var_dump($text);
-//
-//                    });
-
-//            }
-
-//                var_dump($this->data);
-
-
-//        }
+            }
+        }
 
 
 

@@ -40,7 +40,12 @@ Router::addGroup('/api/home/',function (){
 Router::addGroup('/api/lol/',function (){
     Router::post('list','App\Controller\LOLController@list');
     Router::post('heroInfo','App\Controller\LOLController@heroInfo');
+});
 
+//原神路由
+Router::addGroup('/api/genShin/',function (){
+    Router::post('list','App\Controller\GenShinController@list');
+    Router::post('heroInfo','App\Controller\GenShinController@heroInfo');
 });
 
 
