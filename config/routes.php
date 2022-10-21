@@ -44,7 +44,7 @@ Router::addGroup('/api/lol/',function (){
 
 //原神路由
 Router::addGroup('/api/genShin/',function (){
-    Router::post('list','App\Controller\GenShinController@list');
+    Router::post('getHeroList','App\Controller\GenShinController@getHeroList');
     Router::post('heroInfo','App\Controller\GenShinController@heroInfo');
 });
 

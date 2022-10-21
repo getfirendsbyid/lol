@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Request\Games;
+namespace App\Request\GenShin;
 
 use Hyperf\Validation\Request\FormRequest;
 
-class HomeListRequest extends FormRequest
+class GetHeroListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class HomeListRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'page' => 'required|integer',
             'limit' => 'required|integer',
 
         ];
@@ -34,8 +34,9 @@ class HomeListRequest extends FormRequest
     public function messages(): array
     {
         return [
-
-            'limit.required' => 'limit长度不能超过10',
+            'page.required' => 'page不能为空',
+            'page.integer' => 'page必须是整数',
+            'limit.required' => 'limit不能为空',
             'limit.integer' => 'limit必须是整数',
         ];
     }

@@ -40,7 +40,34 @@ class Heros extends Model
     protected $casts = [];
 
 
+    public static function getHeroList($page,$limit)
+    {
+        return Heros::take($limit)->skip(($page-1)*$limit)->get();
+    }
 
+    public static function info($id)
+    {
+        $hero = Heros::find($id);
+
+        $language = Language::all();
+
+
+        foreach ($language as $key=>$item){
+            $where = [
+                ['qy_gs_language.id','=',$item['id']],
+                ['qy_gs_heros.id','=',$id]
+            ];
+            $audio = Audio::leftJoin('qy_gs_heros','qy_gs_heros.id','=','qy_gs_audio.hero_id')
+                ->leftJoin('qy_gs_language','qy_gs_language.id','qy_gs_audio.language_id')
+                ->where($where)
+                ->get();
+            $data[$key]['info'] = $audio;
+            $data[$key]['language'] = $item['name'];
+        }
+        $hero['audio'] = $data;
+        return $hero;
+
+    }
 
 
 }

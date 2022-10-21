@@ -11,22 +11,35 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
-use App\Model\Games;
-use App\Model\LoL\Heros;
-use App\Request\HeroListRequest;
+
+use App\Constants\HttpCode;
+use App\Exception\BusinessException;
+use App\Model\GenShin\Heros;
+use App\Request\GenShin\GetHeroListRequest;
 use App\Utils\ApiResponseTrait;
 
 class GenShinController extends AbstractController
 {
     use ApiResponseTrait;
 
-    public function list(HeroListRequest $request)
+    public function getHeroList(GetHeroListRequest $request)
     {
-        $lolData = Heros::homeList();
-        $data =[
-            'lol'=>$lolData
-        ];
+        if (!$request->has(['page','limit'])){
+            throw new BusinessException(HttpCode::LogicError,'参数不完整');
+        }
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $data = Heros::getHeroList($page,$limit);
         return $this->responseSuccess("获取成功",$data);
     }
 
+    public function heroInfo(GetHeroListRequest $request)
+    {
+        if (!$request->has(['id'])){
+            throw new BusinessException(HttpCode::LogicError,'参数不完整');
+        }
+        $id = $request->input('id');
+        $data = Heros::Info($id);
+        return $this->responseSuccess("获取成功",$data);
+    }
 }
